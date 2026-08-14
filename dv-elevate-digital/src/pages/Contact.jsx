@@ -20,9 +20,29 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError("");
+    try {
+      const res = await fetch("https://formspree.io/f/xvzwkoge", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(e.target),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError("Something went wrong. Please try again or email us directly.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (

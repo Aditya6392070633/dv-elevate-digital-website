@@ -1,15 +1,15 @@
 export const site = {
   name: "DV Elevate Digital",
   tagline: "Build. Innovate. Elevate.",
-  phone: "+91 98765 43210",
-  phoneHref: "+919876543210",
-  whatsapp: "919876543210",
-  email: "hello@dvelevatedigital.com",
+ phone: "+91 63920 70633",
+phoneHref: "+916392070633",
+whatsapp: "916392070633",
+email: "Deepak954807@gmail.com",
   address: "Sector 63, Noida, Delhi NCR, India",
   social: {
     facebook: "https://facebook.com",
-    instagram: "https://instagram.com",
-    linkedin: "https://linkedin.com",
+    instagram: "https://www.instagram.com/singh_deepakpartap?igsh=MWQ2MWl4cG5rd2RoOA==",
+    linkedin: "https://in.linkedin.com/in/deepak-singh-18204732b",
     x: "https://x.com",
   },
 };
