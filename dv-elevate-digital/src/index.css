@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply font-body text-ink-800 bg-paper antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-brand-500/20 text-ink-800;
+  }
+  :focus-visible {
+    outline: 2px solid #155EEF;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs tracking-[0.18em] uppercase text-brand-500;
+  }
+  .eyebrow::before {
+    content: "<";
+  }
+  .eyebrow::after {
+    content: "/>";
+  }
+  .container-x {
+    @apply max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-10;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-gradient text-white font-semibold px-6 py-3.5 shadow-glow transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98];
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-800/15 text-ink-800 font-semibold px-6 py-3.5 transition-colors duration-200 hover:border-brand-500 hover:text-brand-500;
+  }
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/25 text-white font-semibold px-6 py-3.5 transition-colors duration-200 hover:border-white hover:bg-white/10;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-ink-800/[0.06] shadow-card;
+  }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-floaty {
+  animation: floaty 5s ease-in-out infinite;
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: 0; }
+}
+.animate-dash {
+  stroke-dasharray: 6 8;
+  stroke-dashoffset: 400;
+  animation: dash 2.4s linear forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
