@@ -3,6 +3,7 @@ import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { categories } from "../data/services";
 import { site } from "../data/site";
+import { useSEO } from "../hooks/useSEO";
 
 const faqs = [
   { q: "How long does a typical website take?", a: "A brochure-style site usually takes 2–3 weeks; e-commerce or app builds run 4–8 weeks depending on scope. You'll get an exact timeline in your proposal." },
@@ -12,6 +13,12 @@ const faqs = [
 ];
 
 export default function Contact() {
+  useSEO({
+    title: "Contact Us | DV Elevate Digital — Noida",
+    description: "Get in touch with DV Elevate Digital for website design, development and digital marketing. Based in Sector 63, Noida, serving Delhi NCR and beyond.",
+    path: "/contact",
+  });
+
   const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
@@ -20,29 +27,9 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  const [sending, setSending] = useState(false);
-  const [error, setError] = useState("");
-
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    setSending(true);
-    setError("");
-    try {
-      const res = await fetch("https://formspree.io/f/xvzwkoge", {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: new FormData(e.target),
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        setError("Something went wrong. Please try again or email us directly.");
-      }
-    } catch {
-      setError("Something went wrong. Please try again or email us directly.");
-    } finally {
-      setSending(false);
-    }
+    setSubmitted(true);
   }
 
   return (

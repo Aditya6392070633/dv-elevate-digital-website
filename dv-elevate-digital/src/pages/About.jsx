@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Reveal from "../components/Reveal";
 import PageHero from "../components/PageHero";
 import { testimonials } from "../data/testimonials";
+import { useSEO } from "../hooks/useSEO";
 
 const values = [
   { title: "Build with intent", copy: "Every project starts with a clear brief and a plan, not a blank editor.", icon: "M4 20V10l8-6 8 6v10H4Z" },
@@ -17,6 +18,12 @@ const timeline = [
 ];
 
 export default function About() {
+  useSEO({
+    title: "About Us | DV Elevate Digital — Web Agency in Noida",
+    description: "DV Elevate Digital is a Noida-based digital agency covering design, development, apps, marketing, hosting and IT consulting end to end. Learn about our story and values.",
+    path: "/about",
+  });
+
   return (
     <div>
       <PageHero

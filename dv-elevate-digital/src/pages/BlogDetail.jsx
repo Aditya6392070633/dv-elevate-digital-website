@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { blog } from "../data/blog";
+import { useSEO } from "../hooks/useSEO";
 
 const fmt = (d) => new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 
@@ -51,6 +52,13 @@ const bodyBank = {
 export default function BlogDetail() {
   const { slug } = useParams();
   const post = blog.find((b) => b.slug === slug);
+
+  useSEO({
+    title: post ? `${post.title} | DV Elevate Digital Blog` : "Blog Post",
+    description: post?.excerpt,
+    path: `/blog/${slug}`,
+    image: post?.image,
+  });
 
   if (!post) return <Navigate to="/blog" replace />;
 

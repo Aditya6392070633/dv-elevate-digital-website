@@ -3,8 +3,15 @@ import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { CategoryCard } from "../components/ServiceCard";
 import { categories, services } from "../data/services";
+import { useSEO } from "../hooks/useSEO";
 
 export default function ServicesOverview() {
+  useSEO({
+    title: "Our Services | 70+ Digital Services — DV Elevate Digital",
+    description: "Explore 70+ services across web design, web development, mobile apps, digital marketing, SEO/SMO, e-commerce, branding, hosting and IT consulting.",
+    path: "/services",
+  });
+
   return (
     <div>
       <PageHero

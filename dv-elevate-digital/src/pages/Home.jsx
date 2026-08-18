@@ -5,6 +5,7 @@ import { categories, services } from "../data/services";
 import { portfolio } from "../data/portfolio";
 import { blog } from "../data/blog";
 import { testimonials } from "../data/testimonials";
+import { useSEO } from "../hooks/useSEO";
 
 const stats = [
   { value: "160+", label: "Projects delivered" },
@@ -21,6 +22,12 @@ const process = [
 ];
 
 export default function Home() {
+  useSEO({
+    title: "DV Elevate Digital | Web Design, Development & Digital Marketing in Noida",
+    description: "Full-service digital agency in Sector 63, Noida offering website design, web development, mobile apps, digital marketing, SEO/SMO, e-commerce and IT consulting.",
+    path: "/",
+  });
+
   const featuredProjects = portfolio.slice(0, 6);
   const recentPosts = blog.slice(0, 3);
 
@@ -94,7 +101,7 @@ export default function Home() {
               <img
                 src="/images/services/01_Modern_Website_Design.jpg"
                 alt="Modern website design mockup"
-                className="w-full h-56 sm:h-72 lg:h-[420px] object-cover"
+                className="w-full h-[420px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-800/80 via-transparent to-transparent" />
             </div>
@@ -128,9 +135,9 @@ export default function Home() {
       <section className="container-x py-24 grid lg:grid-cols-2 gap-16 items-center">
         <Reveal className="relative order-2 lg:order-1">
           <div className="rounded-3xl overflow-hidden">
-            <img src="/images/services/63_Technology_Solutions.jpg" alt="DV Elevate Digital team at work" className="w-full h-56 sm:h-72 lg:h-[420px] object-cover" />
+            <img src="/images/services/63_Technology_Solutions.jpg" alt="DV Elevate Digital team at work" className="w-full h-[420px] object-cover" />
           </div>
-          <div className="relative mt-4 sm:mt-0 sm:absolute sm:-bottom-6 sm:-right-6 bg-brand-gradient text-white rounded-2xl shadow-glow p-6 w-full sm:w-48">
+          <div className="absolute -bottom-6 -right-6 bg-brand-gradient text-white rounded-2xl shadow-glow p-6 w-48">
             <p className="font-display font-bold text-3xl">10+</p>
             <p className="text-sm text-white/85 mt-1">Industries served, from SaaS to healthcare</p>
           </div>

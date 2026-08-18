@@ -50,12 +50,12 @@ export default function Navbar() {
     }`;
 
   return (
-   <header className="fixed top-0 inset-x-0 z-50">
-      <div
-        className={`container-x flex items-center justify-between h-20 transition-all duration-300 ${
-          scrolled ? "bg-white/95 backdrop-blur shadow-[0_4px_30px_-10px_rgba(10,15,44,0.15)]" : "bg-transparent"
-        }`}
-      >
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-white/95 backdrop-blur shadow-[0_4px_30px_-10px_rgba(10,15,44,0.15)]" : "bg-transparent"
+      }`}
+    >
+      <div className="container-x flex items-center justify-between h-20">
         <Logo variant={scrolled ? "dark" : "light"} />
 
         {/* Desktop nav */}
@@ -68,8 +68,9 @@ export default function Navbar() {
           </NavLink>
 
           <div ref={dropdownRef} className="relative">
-           <button
+            <button
               onClick={() => setDropdownOpen((v) => !v)}
+              onMouseEnter={() => setDropdownOpen(true)}
               className={`flex items-center gap-1.5 py-2 font-medium text-[0.95rem] transition-colors ${
                 location.pathname.startsWith("/services")
                   ? "text-brand-500"

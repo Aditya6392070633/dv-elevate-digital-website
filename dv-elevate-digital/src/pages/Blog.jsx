@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { blog } from "../data/blog";
+import { useSEO } from "../hooks/useSEO";
 
 const fmt = (d) => new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 
 export default function Blog() {
+  useSEO({
+    title: "Blog | Web Design, SEO & Growth Insights — DV Elevate Digital",
+    description: "Notes on design, code, SEO and growth from the DV Elevate Digital team, covering practical advice for Noida and Delhi NCR businesses.",
+    path: "/blog",
+  });
+
   const categories = useMemo(() => ["All", ...new Set(blog.map((b) => b.category))], []);
   const [active, setActive] = useState("All");
 
@@ -25,12 +32,8 @@ export default function Blog() {
       <section className="container-x py-20">
         <Reveal>
           <Link to={`/blog/${featured.slug}`} className="group grid lg:grid-cols-2 gap-8 card overflow-hidden mb-16">
-            <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-auto lg:h-full overflow-hidden bg-ink-800/[0.03]">
-              <img
-                src={featured.image}
-                alt={featured.title}
-                className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-              />
+            <div className="h-64 lg:h-full overflow-hidden">
+              <img src={featured.image} alt={featured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div className="p-8 sm:p-10 flex flex-col justify-center">
               <span className="text-xs font-mono uppercase tracking-wide text-brand-500">Featured · {featured.category}</span>
@@ -67,12 +70,8 @@ export default function Blog() {
           {list.map((post, i) => (
             <Reveal key={post.slug} delay={(i % 3) * 80}>
               <Link to={`/blog/${post.slug}`} className="group card overflow-hidden flex flex-col h-full hover:-translate-y-1.5 transition-transform duration-300">
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-ink-800/[0.03]">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="absolute inset-0 w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  />
+                <div className="h-48 overflow-hidden">
+                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <span className="text-xs font-mono uppercase tracking-wide text-brand-500">{post.category}</span>

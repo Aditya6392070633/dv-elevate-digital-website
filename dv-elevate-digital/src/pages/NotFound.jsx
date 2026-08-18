@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useSEO } from "../hooks/useSEO";
 
 export default function NotFound() {
+  useSEO({
+    title: "Page Not Found | DV Elevate Digital",
+    description: "The page you're looking for doesn't exist or has moved.",
+    path: "/404",
+  });
+
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-ink-800 text-white px-5">
       <div className="text-center">

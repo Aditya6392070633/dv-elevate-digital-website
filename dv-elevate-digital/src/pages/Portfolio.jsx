@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { portfolio } from "../data/portfolio";
+import { useSEO } from "../hooks/useSEO";
 
 export default function Portfolio() {
+  useSEO({
+    title: "Our Portfolio | Web Design & Development Projects — DV Elevate Digital",
+    description: "Browse real client projects across e-commerce, consulting, education, real estate and more, delivered by DV Elevate Digital in Noida.",
+    path: "/portfolio",
+  });
+
   const categories = useMemo(() => ["All", ...new Set(portfolio.map((p) => p.category))], []);
   const [active, setActive] = useState("All");
   const [lightbox, setLightbox] = useState(null);

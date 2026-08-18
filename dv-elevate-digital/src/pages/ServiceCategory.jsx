@@ -3,10 +3,18 @@ import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { ServiceItemCard } from "../components/ServiceCard";
 import { categories, getCategory, getServicesByCategory } from "../data/services";
+import { useSEO } from "../hooks/useSEO";
 
 export default function ServiceCategory() {
   const { categorySlug } = useParams();
   const category = getCategory(categorySlug);
+
+  useSEO({
+    title: category ? `${category.title} Services in Noida | DV Elevate Digital` : "Services",
+    description: category ? `${category.desc} Serving Noida, Delhi NCR and clients nationwide.` : undefined,
+    path: `/services/${categorySlug}`,
+    image: category?.image,
+  });
 
   if (!category) return <Navigate to="/services" replace />;
 

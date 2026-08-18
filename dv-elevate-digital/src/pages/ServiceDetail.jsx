@@ -2,6 +2,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import Reveal from "../components/Reveal";
 import { ServiceItemCard } from "../components/ServiceCard";
 import { getCategory, getService, getServicesByCategory } from "../data/services";
+import { useSEO } from "../hooks/useSEO";
 
 const processSteps = [
   { title: "Brief & scope", copy: "We confirm goals, timeline and budget so there are no surprises later." },
@@ -14,6 +15,13 @@ export default function ServiceDetail() {
   const { categorySlug, serviceSlug } = useParams();
   const category = getCategory(categorySlug);
   const service = getService(categorySlug, serviceSlug);
+
+  useSEO({
+    title: service ? `${service.title} in Noida | DV Elevate Digital` : "Service",
+    description: service ? `${service.description} Get in touch for a free quote.` : undefined,
+    path: `/services/${categorySlug}/${serviceSlug}`,
+    image: service?.image,
+  });
 
   if (!category || !service) return <Navigate to="/services" replace />;
 
