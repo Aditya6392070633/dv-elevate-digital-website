@@ -32,30 +32,162 @@ export default function About() {
         copy="We're a small, senior team that treats every client project like our own product — measured, iterated, and never left to coast on a launch-day screenshot."
       />
 
-      <section className="container-x py-24 grid lg:grid-cols-2 gap-16 items-center">
+      <section className="container-x py-24">
         <Reveal>
-          <div className="rounded-3xl overflow-hidden">
-            <img src="/images/services/58_Business_Strategy.jpg" alt="Business strategy session" className="w-full h-[420px] object-cover" />
+          <div className="rounded-3xl overflow-hidden shadow-card">
+            <img
+              src="/images/about/our-story-infographic.png"
+              alt="DV Elevate Digital's story — from one website to a full-service digital partner, guided by honesty, delivery and growth"
+              className="w-full h-auto"
+            />
           </div>
         </Reveal>
-        <div>
+
+        <div className="max-w-3xl mx-auto text-center mt-14">
           <Reveal>
-            <span className="eyebrow">Our Story</span>
-            <h2 className="font-display font-bold text-3xl sm:text-4xl mt-4 leading-tight">
-              Started with one website. Grew into a full digital partner.
-            </h2>
+            <h3 className="font-display font-bold text-2xl sm:text-3xl leading-tight">
+              Why businesses trust us with their growth
+            </h3>
           </Reveal>
           <Reveal delay={100}>
-            <p className="text-slate mt-6 leading-relaxed">
-              DV Elevate Digital began the way most honest agencies do — with a handful of small business
-              websites and a promise to actually deliver what was scoped. That reputation is still how most of
-              our clients find us today.
+            <p className="text-slate mt-5 leading-relaxed">
+              We've seen too many businesses get burned by agencies that disappear after the invoice clears —
+              a pretty homepage, zero support, and a "good luck" on the way out. That's the exact experience
+              we built DV Elevate Digital to replace. Every client gets a scoped plan, a senior team that
+              actually answers the phone, and work that's judged by results, not just how it looks in a
+              screenshot.
             </p>
             <p className="text-slate mt-4 leading-relaxed">
-              As briefs got more ambitious, so did we — bringing app development, e-commerce, digital marketing,
-              SEO and IT consulting in-house so clients never have to stitch together five different vendors.
+              Whether you're a local business launching your first website or a growing company ready to
+              scale marketing, apps and infrastructure together — you get one accountable partner, honest
+              timelines, and a team that treats your growth as the actual goal, not a side effect.
             </p>
           </Reveal>
+          <Reveal delay={150}>
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-8 text-sm">
+              {[
+                "70+ services under one roof",
+                "No vendor hand-offs — one accountable team",
+                "Built to scale with you, not just launch and leave",
+              ].map((line) => (
+                <span key={line} className="flex items-center gap-2 text-ink-800 font-medium">
+                  <svg className="shrink-0 text-brand" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 12.5l5 5L20 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {line}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={200}>
+            <Link to="/contact" className="btn-primary mt-10">
+              Start Your Project With Us
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* FOUNDER */}
+      <section className="bg-paper py-24">
+        <div className="container-x">
+          <Reveal className="max-w-xl mx-auto text-center">
+            <span className="eyebrow">Leadership</span>
+            <h2 className="font-display font-bold text-3xl sm:text-4xl mt-4">Meet the Founder</h2>
+          </Reveal>
+
+          <div className="mt-14 grid lg:grid-cols-[380px_1fr] gap-10 lg:gap-16 items-start max-w-5xl mx-auto">
+            <Reveal>
+              <div className="relative">
+                <div className="rounded-3xl overflow-hidden shadow-glow">
+                  <img
+                    src="/images/team/deepak-singh-founder.png"
+                    alt="Deepak Singh, Founder of DV Elevate Digital"
+                    className="w-full h-[460px] object-cover object-top"
+                  />
+                </div>
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[88%] card px-6 py-4 text-center">
+                  <p className="font-display font-semibold text-lg">Deepak Singh</p>
+                  <p className="text-xs text-slate mt-1">Founder &amp; CEO, DV Elevate Digital</p>
+                </div>
+              </div>
+            </Reveal>
+
+            <div>
+              <Reveal delay={100}>
+                <p className="text-slate leading-relaxed">
+                  Deepak Singh founded DV Elevate Digital on a simple conviction: businesses deserve a
+                  technology partner who ships, not just pitches. A full-stack developer at heart, he
+                  spent years building web applications, APIs and ERP systems for schools and businesses
+                  across India and the UAE before turning that hands-on engineering discipline into an
+                  agency built the same way.
+                </p>
+                <p className="text-slate leading-relaxed mt-4">
+                  That background shows up in how DV Elevate Digital operates today — every project is
+                  scoped like a product, built on solid architecture, and handed over with the same care
+                  a founder would give their own company. It's the reason clients come to DV Elevate
+                  Digital for a website and stay for the growth partnership that follows.
+                </p>
+              </Reveal>
+
+              <Reveal delay={150}>
+                <div className="mt-8 grid sm:grid-cols-2 gap-4">
+                  <div className="card p-5">
+                    <p className="text-2xl font-display font-bold text-brand">4+ yrs</p>
+                    <p className="text-xs text-slate mt-1">Hands-on full-stack &amp; ERP development experience</p>
+                  </div>
+                  <div className="card p-5">
+                    <p className="text-2xl font-display font-bold text-brand">India &amp; UAE</p>
+                    <p className="text-xs text-slate mt-1">Clients and school systems built and supported across both regions</p>
+                  </div>
+                </div>
+              </Reveal>
+
+              <Reveal delay={200}>
+                <div className="mt-8 card p-6 sm:p-8 relative">
+                  <svg className="absolute top-5 left-5 text-brand-100" width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M9.5 6C6.5 6 4 8.5 4 11.7c0 3 2.2 5.3 5 5.3.4 0 .8 0 1.1-.1-.6 1.7-2.1 3-4.1 3.6l.9 1.8c3.6-1 6.1-4 6.1-8.1C13 8.9 11.6 6 9.5 6Zm10 0c-3 0-5.5 2.5-5.5 5.7 0 3 2.2 5.3 5 5.3.4 0 .8 0 1.1-.1-.6 1.7-2.1 3-4.1 3.6l.9 1.8c3.6-1 6.1-4 6.1-8.1C23 8.9 21.6 6 19.5 6Z" />
+                  </svg>
+                  <p className="italic text-ink-800 leading-relaxed pl-8">
+                    "I started this agency because I was tired of seeing businesses get a good-looking
+                    website and nothing else — no strategy, no support, no measurable growth. DV Elevate
+                    Digital exists to be the technology partner I always wanted to hire: senior, honest,
+                    and genuinely invested in the outcome."
+                  </p>
+                  <p className="text-sm font-semibold mt-4 pl-8">— Deepak Singh, Founder</p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={250}>
+                <div className="mt-8">
+                  <span className="eyebrow">The Vision</span>
+                  <h3 className="font-display font-semibold text-xl mt-3">
+                    One partner for every stage of digital growth.
+                  </h3>
+                  <p className="text-slate leading-relaxed mt-3">
+                    Deepak's vision for DV Elevate Digital is to remove the friction businesses face when
+                    growing online — the five different freelancers, the dropped handoffs, the agency that
+                    disappears after launch. Instead, DV Elevate Digital is built to cover design,
+                    development, apps, marketing, SEO and hosting under one roof, run with an engineer's
+                    attention to detail and a founder's stake in the result.
+                  </p>
+                  <ul className="mt-5 space-y-3">
+                    {[
+                      "Build technology that's engineered to last, not just to demo well on launch day.",
+                      "Give small and mid-sized businesses access to senior-level talent, not junior guesswork.",
+                      "Measure success in client growth and retention, not just projects delivered.",
+                    ].map((line) => (
+                      <li key={line} className="flex gap-3 text-sm text-slate">
+                        <svg className="shrink-0 mt-0.5 text-brand" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                          <path d="M4 12.5l5 5L20 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {line}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import { categories } from "../data/services";
@@ -38,8 +39,10 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    document.documentElement.style.overflow = mobileOpen ? "hidden" : "";
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
+      document.documentElement.style.overflow = "";
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
@@ -150,9 +153,11 @@ export default function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden relative z-50 h-10 w-10 flex flex-col items-center justify-center gap-1.5"
+          type="button"
+          className="lg:hidden relative z-[70] h-11 w-11 flex flex-col items-center justify-center gap-1.5 -mr-2"
           onClick={() => setMobileOpen((v) => !v)}
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
         >
           <span
             className={`block h-0.5 w-7 rounded-full transition-all duration-300 ${
@@ -172,59 +177,67 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile full-screen menu */}
-      <div
-        className={`lg:hidden fixed inset-0 top-0 bg-white transition-transform duration-300 ease-out overflow-y-auto ${
-          mobileOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="container-x pt-24 pb-10 flex flex-col gap-1 min-h-full">
-          <MobileLink to="/" label="Home" />
-          <MobileLink to="/about" label="About" />
+      {/* Mobile full-screen menu — rendered via portal directly on <body> so it can
+          never be affected by the header's own stacking/positioning context, and is
+          always guaranteed to sit above every other element on the page. */}
+      {createPortal(
+        <div
+          className={`lg:hidden fixed left-0 right-0 top-0 z-[999] bg-white overflow-y-auto transition-opacity duration-200 ease-out ${
+            mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+          style={{ height: "100dvh", minHeight: "100vh" }}
+          aria-hidden={!mobileOpen}
+        >
+          <div className="container-x pt-24 pb-10 flex flex-col gap-1 min-h-full">
+            <MobileLink to="/" label="Home" />
+            <MobileLink to="/about" label="About" />
 
-          <button
-            onClick={() => setMobileServicesOpen((v) => !v)}
-            className="flex items-center justify-between py-4 border-b border-ink-800/[0.06] font-semibold text-lg text-ink-800"
-          >
-            Services
-            <svg
-              width="13"
-              height="8"
-              viewBox="0 0 11 7"
-              fill="none"
-              className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`}
+            <button
+              type="button"
+              onClick={() => setMobileServicesOpen((v) => !v)}
+              className="flex items-center justify-between py-4 border-b border-ink-800/[0.06] font-semibold text-lg text-ink-800"
             >
-              <path d="M1 1L5.5 5.5L10 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-            </svg>
-          </button>
-          {mobileServicesOpen && (
-            <div className="flex flex-col pl-2 pb-2 pt-1 gap-0.5 bg-paper rounded-lg mb-1">
-              {categories.map((cat) => (
-                <Link
-                  key={cat.slug}
-                  to={`/services/${cat.slug}`}
-                  className="py-2.5 px-3 text-sm text-slate hover:text-brand-500"
-                >
-                  {cat.title}
-                </Link>
-              ))}
+              Services
+              <svg
+                width="13"
+                height="8"
+                viewBox="0 0 11 7"
+                fill="none"
+                className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`}
+              >
+                <path d="M1 1L5.5 5.5L10 1" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+            </button>
+            {mobileServicesOpen && (
+              <div className="flex flex-col pl-2 pb-2 pt-1 gap-0.5 bg-paper rounded-lg mb-1">
+                {categories.map((cat) => (
+                  <Link
+                    key={cat.slug}
+                    to={`/services/${cat.slug}`}
+                    className="py-2.5 px-3 text-sm text-slate hover:text-brand-500"
+                  >
+                    {cat.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            <MobileLink to="/portfolio" label="Portfolio" />
+            <MobileLink to="/blog" label="Blog" />
+            <MobileLink to="/contact" label="Contact" />
+
+            <div className="mt-6 flex flex-col gap-3">
+              <a href={`tel:${site.phoneHref}`} className="btn-outline w-full">
+                Call {site.phone}
+              </a>
+              <Link to="/contact" className="btn-primary w-full">
+                Get a Free Quote
+              </Link>
             </div>
-          )}
-
-          <MobileLink to="/portfolio" label="Portfolio" />
-          <MobileLink to="/blog" label="Blog" />
-          <MobileLink to="/contact" label="Contact" />
-
-          <div className="mt-6 flex flex-col gap-3">
-            <a href={`tel:${site.phoneHref}`} className="btn-outline w-full">
-              Call {site.phone}
-            </a>
-            <Link to="/contact" className="btn-primary w-full">
-              Get a Free Quote
-            </Link>
           </div>
-        </div>
-      </div>
+        </div>,
+        document.body
+      )}
     </header>
   );
 }
