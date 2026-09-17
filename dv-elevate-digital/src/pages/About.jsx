@@ -190,7 +190,91 @@ export default function About() {
           </div>
         </div>
       </section>
+{/* MANAGING DIRECTOR */}
+<section className="container-x py-24">
+  <Reveal className="max-w-xl mx-auto text-center">
+    <span className="eyebrow">Leadership</span>
 
+    <h2 className="font-display font-bold text-3xl sm:text-4xl mt-4">
+      Meet Our Managing Director
+    </h2>
+
+    <p className="text-slate mt-4 leading-relaxed">
+      Our Managing Director brings a strong technical foundation and a
+      business-focused approach to building digital solutions for clients.
+    </p>
+  </Reveal>
+
+  <div className="mt-14 grid lg:grid-cols-[420px_1fr] gap-10 lg:gap-16 items-center max-w-5xl mx-auto">
+
+    {/* PHOTO */}
+    <Reveal>
+      <div className="rounded-3xl overflow-hidden shadow-glow border border-ink-800/[0.06] bg-white">
+        <img
+          src="/images/team/managing-director.png"
+          alt="Managing Director of DV Elevate Digital receiving the Business Excellence Award 2025"
+          className="w-full h-auto object-cover"
+        />
+      </div>
+    </Reveal>
+
+    {/* INFORMATION */}
+    <div>
+
+      <Reveal delay={100}>
+        <span className="eyebrow">Managing Director</span>
+
+        <h3 className="font-display font-bold text-2xl sm:text-3xl mt-4">
+          Leading DV Elevate Digital with technology and business vision.
+        </h3>
+
+        <p className="text-slate leading-relaxed mt-5">
+          The Managing Director of DV Elevate Digital combines technical
+          knowledge with a business-oriented approach to help shape the
+          company's digital solutions, client relationships and long-term growth.
+        </p>
+      </Reveal>
+
+      <Reveal delay={150}>
+        <div className="mt-8 grid sm:grid-cols-2 gap-4">
+
+          {/* MCA */}
+          <div className="card p-6">
+            <div className="h-12 w-12 rounded-2xl bg-brand-gradient flex items-center justify-center text-white">
+              🎓
+            </div>
+
+            <p className="font-display font-semibold text-lg mt-4">
+              Master of Computer Applications
+            </p>
+
+            <p className="text-sm text-slate mt-2">
+              MCA — strong academic foundation in computer applications
+              and technology.
+            </p>
+          </div>
+
+          {/* AWARD */}
+          <div className="card p-6">
+            <div className="h-12 w-12 rounded-2xl bg-brand-gradient flex items-center justify-center text-white">
+              ⭐
+            </div>
+
+            <p className="font-display font-semibold text-lg mt-4">
+              Business Excellence Award 2025
+            </p>
+
+            <p className="text-sm text-slate mt-2">
+              Recognised at the Business Excellence Awards 2025.
+            </p>
+          </div>
+
+        </div>
+      </Reveal>
+
+    </div>
+  </div>
+</section>
       {/* VALUES */}
       <section className="bg-paper py-24">
         <div className="container-x">
